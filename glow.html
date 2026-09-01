@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Glow & Go | Skincare & Beauty</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8fbf7;
+        }
+
+        /* NAVBAR */
+        header {
+            background: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #3f7654;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 25px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #3f7654;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 8%;
+            background: linear-gradient(135deg, #e7f5e8, #fdfcf8);
+        }
+
+        .hero-text {
+            width: 50%;
+        }
+
+        .hero-text h1 {
+            font-size: 55px;
+            color: #315f43;
+            margin-bottom: 15px;
+        }
+
+        .hero-text h2 {
+            font-size: 28px;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 550px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            background: #3f7654;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background: #315f43;
+        }
+
+        .hero-image {
+            width: 42%;
+            min-height: 350px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #d5ead7, #f1f6ed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+
+        /* GENERAL SECTION */
+        section {
+            padding: 75px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #315f43;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        /* PRODUCTS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            padding-bottom: 25px;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .product-image {
+            height: 220px;
+            background: #e7f3e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 65px;
+        }
+
+        .product-card h3 {
+            margin: 18px 10px 8px;
+            color: #315f43;
+        }
+
+        .product-card p {
+            padding: 0 15px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 20px;
+            color: #3f7654;
+            margin: 15px 0;
+        }
+
+        /* ABOUT */
+        .about {
+            background: #eef7ee;
+        }
+
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            font-size: 17px;
+        }
+
+        /* FEATURES */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .feature span {
+            font-size: 40px;
+        }
+
+        .feature h3 {
+            margin: 15px 0 8px;
+            color: #315f43;
+        }
+
+        /* CONTACT */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            color: #315f43;
+            margin-bottom: 15px;
+            font-size: 25px;
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+        }
+
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        /* NEWSLETTER */
+        .newsletter {
+            background: #315f43;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+
+        .newsletter p {
+            margin-bottom: 25px;
+        }
+
+        .newsletter input {
+            max-width: 350px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #203b2a;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text,
+            .hero-image {
+                width: 100%;
+            }
+
+            .hero-image {
+                margin-top: 40px;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .hero-text h1 {
+                font-size: 40px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+
+        <div class="logo">
+            Glow & Go
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HOME -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+
+            <h1>Glow & Go</h1>
+
+            <h2>Simple Skincare. Everyday Glow.</h2>
+
+            <p>
+                Discover simple, affordable and effective skincare
+                essentials designed to make your everyday skincare
+                routine easy and enjoyable.
+            </p>
+
+            <a href="#products" class="btn">
+                Explore Products
+            </a>
+
+        </div>
+
+
+        <div class="hero-image">
+            🌿 ✨ 🧴
+        </div>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+
+    <section id="products">
+
+        <div class="section-title">
+
+            <h2>Our Products</h2>
+
+            <p>
+                Simple skincare essentials for your everyday routine.
+            </p>
+
+        </div>
+
+
+        <div class="products">
+
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    🧴
+                </div>
+
+                <h3>Gentle Face Wash</h3>
+
+                <p>
+                    A gentle cleanser for fresh and clean-looking skin.
+                </p>
+
+                <div class="price">
+                    ₹499
+                </div>
+
+                <button class="btn" onclick="showMessage('Gentle Face Wash')">
+                    View Product
+                </button>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    ✨
+                </div>
+
+                <h3>Vitamin C Serum</h3>
+
+                <p>
+                    Lightweight serum for a fresh and radiant-looking complexion.
+                </p>
+
+                <div class="price">
+                    ₹699
+                </div>
+
+                <button class="btn" onclick="showMessage('Vitamin C Serum')">
+                    View Product
+                </button>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    🌿
+                </div>
+
+                <h3>Aloe Vera Gel</h3>
+
+                <p>
+                    A refreshing gel suitable for everyday skincare routines.
+                </p>
+
+                <div class="price">
+                    ₹399
+                </div>
+
+                <button class="btn" onclick="showMessage('Aloe Vera Gel')">
+                    View Product
+                </button>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    🧴
+                </div>
+
+                <h3>Daily Moisturizer</h3>
+
+                <p>
+                    A lightweight moisturizer for soft and comfortable skin.
+                </p>
+
+                <div class="price">
+                    ₹549
+                </div>
+
+                <button class="btn" onclick="showMessage('Daily Moisturizer')">
+                    View Product
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <div class="section-title">
+
+            <h2>About Glow & Go</h2>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <p>
+                Glow & Go is a skincare and beauty brand focused on
+                making everyday skincare simple, accessible and enjoyable.
+            </p>
+
+            <p>
+                We believe that skincare does not need to be complicated.
+                Our goal is to provide simple products that can easily
+                become part of your daily routine.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature">
+
+                <span>🌿</span>
+
+                <h3>Simple</h3>
+
+                <p>
+                    Easy-to-understand skincare essentials.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <span>💚</span>
+
+                <h3>Affordable</h3>
+
+                <p>
+                    Beauty products designed for everyday budgets.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <span>✨</span>
+
+                <h3>Everyday Glow</h3>
+
+                <p>
+                    Simple routines for feeling confident every day.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <div class="section-title">
+
+            <h2>Contact Us</h2>
+
+            <p>
+                Have a question? We'd love to hear from you.
+            </p>
+
+        </div>
+
+
+        <div class="contact-container">
+
+
+            <div class="contact-info">
+
+                <h3>Get in Touch</h3>
+
+                <p>
+                    📧 Email: hello@glowandgo.com
+                </p>
+
+                <p>
+                    📞 Phone: +91 98765 43210
+                </p>
+
+                <p>
+                    📍 Location: Chandigarh, India
+                </p>
+
+                <p>
+                    🕒 Monday – Saturday: 10 AM – 6 PM
+                </p>
+
+            </div>
+
+
+            <form onsubmit="submitForm(event)">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Your Email"
+                    required
+                >
+
+                <textarea
+                    id="message"
+                    placeholder="Your Message"
+                    required
+                ></textarea>
+
+                <button class="btn" type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- NEWSLETTER -->
+
+    <section class="newsletter">
+
+        <h2>Join the Glow & Go Community</h2>
+
+        <p>
+            Get skincare tips, product updates and beauty inspiration.
+        </p>
+
+        <input
+            type="email"
+            id="subscribeEmail"
+            placeholder="Enter your email"
+        >
+
+        <button
+            class="btn"
+            onclick="subscribe()"
+        >
+            Subscribe
+        </button>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Glow & Go. All Rights Reserved.
+        </p>
+
+        <p>
+            Simple Skincare. Everyday Glow.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function showMessage(productName) {
+
+            alert(
+                productName +
+                " selected! Product details coming soon."
+            );
+
+        }
+
+
+        function submitForm(event) {
+
+            event.preventDefault();
+
+            const name =
+                document.getElementById("name").value;
+
+            alert(
+                "Thank you, " +
+                name +
+                "! Your message has been received."
+            );
+
+        }
+
+
+        function subscribe() {
+
+            const email =
+                document.getElementById("subscribeEmail").value;
+
+            if (email === "") {
+
+                alert("Please enter your email.");
+
+                return;
+
+            }
+
+            alert(
+                "Thank you for subscribing to Glow & Go!"
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
